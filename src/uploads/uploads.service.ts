@@ -2,7 +2,8 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class UploadsService {
-  getFileUrl(filename: string): string {
-    return `http://localhost:3000/uploads/${filename}`;
+  getFileUrl(context: string, filename: string): string {
+    const baseUrl = process.env.APP_URL || 'http://localhost:3000';
+    return `${baseUrl}/uploads/${context}/${filename}`;
   }
 }
